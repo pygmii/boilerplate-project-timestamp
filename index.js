@@ -30,11 +30,11 @@ app.get("/api/:date?", function(req, res) {
     date = new Date();
   }
 
-  let format = 'ddd, D MMM YYYY HH:mm:ss [GMT]';
+  let format = 'ddd, DD MMM YYYY HH:mm:ss [GMT]';
   
   if (!Number.isNaN(date.valueOf())) {
     res.json({
-      unix: parseInt((date.getTime())),
+      unix: parseInt((date.valueOf())),
       utc: moment(date).format(format)
     });
     return;
