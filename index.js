@@ -22,8 +22,15 @@ app.get("/", function (req, res) {
 
 // your first API endpoint... 
 app.get("/api/:date?", function(req, res) {
-  let date = new Date(req.params.date);
+  let dateString = req.params.date;
+  let date =  new Date(dateString);
+  if ( typeof query === 'undefined')
+  {
+    date = new Date();
+  }
+
   let format = 'ddd, D MMM YYYY HH:mm:ss [GMT]';
+  
   if (!Number.isNaN(date.valueOf())) {
     res.json({
       unix: parseInt((date.getTime() / 1000).toFixed(0)),
