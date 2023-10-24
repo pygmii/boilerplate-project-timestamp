@@ -22,6 +22,7 @@ app.get("/", function (req, res) {
 
 // your first API endpoint... 
 app.get("/api/:date?", function(req, res) {
+  console.log(req.params.date);
   let dateString = req.params.date;
   let date =  new Date(dateString);
   if ( typeof dateString === 'undefined')
@@ -46,6 +47,7 @@ app.get("/api/:date?", function(req, res) {
       unix: unixTimeStamp,
       utc: moment(unixDate).format(format)
     });
+    return;
   }
   
   res.json({error: 'Invalid Date'});
