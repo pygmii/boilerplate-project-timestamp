@@ -8,6 +8,7 @@ var app = express();
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
 // so that your API is remotely testable by FCC 
 var cors = require('cors');
+const moment = require('moment/moment');
 app.use(cors({optionsSuccessStatus: 200}));  // some legacy browsers choke on 204
 
 // http://expressjs.com/en/starter/static-files.html
@@ -23,9 +24,10 @@ app.get("/", function (req, res) {
 app.get("/api/:date?", function(req, res) {
   let unixTimeStamp = Number.parseInt(req.params.date);
   if (!Number.isNaN(unixTimeStamp)) {
+    let date = new Date(unixTimeStamp);
     res.json({
       unix: unixTimeStamp,
-      utc: new Date(unixTimeStamp)
+      utc: moment(date).format('ddd, D MMM YYYY HH:mm:ss GMT')
     });
 
     return;
