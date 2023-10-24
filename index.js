@@ -35,7 +35,7 @@ app.get("/api/:date?", function(req, res) {
   }
 
   let date = new Date(req.params.date);
-  if(!Date.isNaN(date))
+  if(!Number.isNaN(date.valueOf()))
   {
     res.json({
       unix: parseInt((date.getTime() / 1000).toFixed(0)),
