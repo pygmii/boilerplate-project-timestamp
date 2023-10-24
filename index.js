@@ -39,7 +39,7 @@ app.get("/api/:date?", function(req, res) {
     return;
   }
 
-  let unixTimeStamp = Number.parseInt(req.params.date);
+  let unixTimeStamp = Number.parseInt(dateString);
   if (!Number.isNaN(unixTimeStamp)) {
     let unixDate = new Date(unixTimeStamp);
     res.json({
