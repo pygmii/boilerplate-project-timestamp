@@ -38,7 +38,7 @@ app.get("/api/:date?", function(req, res) {
   if(!Date.isNaN(date))
   {
     res.json({
-      unix: Math.floor(date.getTime() / 1000),
+      unix: parseInt((date.getTime() / 1000).toFixed(0)),
       utc: moment(date).format(format)
     });
     return ;
