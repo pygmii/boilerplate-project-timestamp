@@ -24,7 +24,7 @@ app.get("/", function (req, res) {
 app.get("/api/:date?", function(req, res) {
   let dateString = req.params.date;
   let date =  new Date(dateString);
-  if ( typeof query === 'undefined')
+  if ( typeof dateString === 'undefined')
   {
     date = new Date();
   }
@@ -33,7 +33,7 @@ app.get("/api/:date?", function(req, res) {
   
   if (!Number.isNaN(date.valueOf())) {
     res.json({
-      unix: parseInt((date.getTime() / 1000).toFixed(0)),
+      unix: parseInt((date.getTime())),
       utc: moment(date).format(format)
     });
     return;
