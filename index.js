@@ -38,12 +38,11 @@ app.get("/api/:date?", function(req, res) {
   if(!Date.isNaN(date))
   {
     res.json({
-      unix: unixTimeStamp,
+      unix: Math.floor(date.getTime() / 1000),
       utc: moment(date).format(format)
     });
     return ;
   }
-
 
   res.json({error: 'Invalid Date'});
 });
