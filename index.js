@@ -25,11 +25,11 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/:date?", function (req, res) {
-  if(typeof req === 'number')
+  if(typeof req.params.date === 'number')
   {
     res.json({
-      unix: req,
-      utc: new Date(req * 1000)
+      unix: req.params.date,
+      utc: new Date(req.params.date * 1000)
     });
   }
   else
