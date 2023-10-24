@@ -24,13 +24,15 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-app.get("/api/:date?", function (req, res) {
-  if(typeof req.params.date === 'number')
-  {
+app.get("/api/:date?", function(req, res) {
+  let unixTimeStamp = Number.parseInt(req.params.date);
+  if (!Number.isNaN(unixTimeStamp)) {
     res.json({
-      unix: req.params.date,
-      utc: new Date(req.params.date * 1000)
+      unix: unixTimeStamp,
+      utc: new Date(unixTimeStamp)
     });
+
+    return;
   }
   else
   {
