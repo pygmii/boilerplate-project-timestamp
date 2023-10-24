@@ -27,7 +27,7 @@ app.get("/api/:date?", function(req, res) {
     let date = new Date(unixTimeStamp);
     res.json({
       unix: unixTimeStamp,
-      utc: moment(date).format('ddd, D MMM YYYY HH:mm:ss GMT')
+      utc: moment(date).format('ddd, D MMM YYYY HH:mm:ss [GMT]')
     });
 
     return;
