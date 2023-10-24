@@ -20,10 +20,6 @@ app.get("/", function (req, res) {
 
 
 // your first API endpoint... 
-app.get("/api/hello", function (req, res) {
-  res.json({greeting: 'hello API'});
-});
-
 app.get("/api/:date?", function(req, res) {
   let unixTimeStamp = Number.parseInt(req.params.date);
   if (!Number.isNaN(unixTimeStamp)) {
